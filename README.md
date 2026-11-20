@@ -1,4 +1,7 @@
 # Token Radar — token-radar-01 (make.fun)
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/DimasPutera/token-launch-radar/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/DimasPutera/token-launch-radar/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
 
 Pre-token protocols ranked by implied value. One snapshot in, one ranked board out. No network at build or run time: every byte shown comes from the sealed snapshot.
 
@@ -78,9 +81,10 @@ Caps: screenshot at most 512 KiB each, dossier at most 1.5 MiB, dashboard text a
 ```sh
 npm install --no-save --no-audit --no-fund puppeteer-core
 node scripts/shot.mjs   # serves out1/ on loopback, captures board/detail/filtered at 1440x900
-MAKEFUN_OUTPUT_DIR=out1 node main.ts --input <kit>/input/snapshot.json
-MAKEFUN_OUTPUT_DIR=out2 node main.ts --input <kit>/input/snapshot.json
-python3 scripts/verify.py <repo> <kit>   # all checks, incl. byte-identical determinism
+MAKEFUN_OUTPUT_DIR=out1 node main.ts --input ~/workspace/makefun/token-radar-01/token-radar-01-kit/input/snapshot.json
+MAKEFUN_OUTPUT_DIR=out2 node main.ts --input ~/workspace/makefun/token-radar-01/token-radar-01-kit/input/snapshot.json
+diff -r out1 out2
+python3 scripts/verify.py . ~/workspace/makefun/token-radar-01/token-radar-01-kit   # all checks, incl. byte-identical determinism
 ```
 
 Requires a system Chromium (`/opt/meta-chromium/chrome` or the puppeteer cache build). No Chromium download. No GitHub push, no make.fun submit — local build + verification only.
@@ -90,3 +94,7 @@ Requires a system Chromium (`/opt/meta-chromium/chrome` or the puppeteer cache b
 - Implied value is a model, not a price; the peer multiple is a median over live-token peers, so a thin category falls back to the global median.
 - The snapshot is a point-in-time sealed input (2026-11-14); re-running on a newer snapshot changes the board.
 - Farm steps are generic operational guidance, not financial advice; costs are estimates carried in the step text.
+
+---
+
+[Entered on make.fun](https://make.fun/bounty/token-radar-01)
